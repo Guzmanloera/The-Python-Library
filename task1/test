@@ -1,1 +1,29 @@
+import argparse
+from date_kalendar import kalendar
 
+text = '13333 Thursdayfdgdf Novembetytrr'
+text2 = '3 Wednesday May'
+kalendar()
+kalendar(date_text=text2)
+kalendar(date_text=text)
+
+if name == "main":
+parser = argparse.ArgumentParser(description='triangle')
+parser.add_argument('param', nargs='*', help='Enter a path(s) to directory(s) to list')
+args = parser.parse_args()
+print(kalendar(*args.param))
+
+def test_kalendar_no_args():
+    assert kalendar() == None or kalendar() == ''
+
+def test_kalendar_with_args():
+    assert kalendar(date_text='3 Wednesday May') == 'Wednesday, May 3'
+
+def test_kalendar_with_invalid_args():
+    assert kalendar(date_text='13333 Thursdayfdgdf Novembetytrr') == ''
+
+def test_kalendar_with_args_and_cli_arg():
+    assert kalendar(date_text='3 Wednesday May', param='2022') == 'Wednesday, May 3'
+
+def test_command_line_argument():
+    assert parser.parse_args(['2022']).param == ['2022']
